@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Atifrazzaq\\Weviewer\\": "src/"
+            "Atifrazzaq\\WeViewer\\": "src/"
         }
     },
     "require": {
@@ -15,7 +15,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Atifrazzaq\\Weviewer\\WeViewerServiceProvider"
+                "Atifrazzaq\\WeViewer\\WeViewerServiceProvider"
             ]
         }
     },
