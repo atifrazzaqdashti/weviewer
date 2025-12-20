@@ -15,7 +15,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Atifrazzaq\\Weviewer\\Providers\\WeViewerServiceProvider"
+                "Atifrazzaq\\Weviewer\\WeViewerServiceProvider"
             ]
         }
     },
