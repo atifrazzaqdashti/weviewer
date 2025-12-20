@@ -2,6 +2,7 @@
     "name": "atifrazzaq/weviewer",   
     "description": "Here you can see tables details, manage logs, and many more",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Atifrazzaq\\Weviewer\\": "src/"
