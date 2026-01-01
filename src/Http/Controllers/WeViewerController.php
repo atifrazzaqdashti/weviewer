@@ -1,13 +1,13 @@
 <?php
 
-namespace Atifrazzaq\WeViewer\Http\Controllers;
+namespace Atifrazzaq\weviewer\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
 
-class WeViewerController extends Controller
+class weviewerController extends Controller
 {
     public function dashboard()
     {
@@ -21,7 +21,7 @@ class WeViewerController extends Controller
             'database_engine' => $this->getDatabaseEngine()
         ];
         
-        return view('weViewer::dashboard', compact('stats'));
+        return view('weviewer::dashboard', compact('stats'));
     }
     
     public function tables()
@@ -45,7 +45,7 @@ class WeViewerController extends Controller
             'to' => min($offset + $perPage, $total)
         ];
         
-        return view('weViewer::tables', compact('tables', 'pagination'));
+        return view('weviewer::tables', compact('tables', 'pagination'));
     }
     
     public function viewTable($tableName)
@@ -68,7 +68,7 @@ class WeViewerController extends Controller
             $records = $query->paginate($perPage)->appends(request()->query());
             $columns = DB::getSchemaBuilder()->getColumnListing($tableName);
             
-            return view('weViewer::table-view', compact('records', 'columns', 'tableName'));
+            return view('weviewer::table-view', compact('records', 'columns', 'tableName'));
         } catch (\Exception $e) {
             return redirect()->route('weviewer.tables')->with('error', 'Table not found or error accessing table.');
         }
@@ -382,9 +382,9 @@ class WeViewerController extends Controller
                 return $b['modified'] - $a['modified'];
             });
             
-            return view('weViewer::logs', compact('logFiles'));
+            return view('weviewer::logs', compact('logFiles'));
         } catch (\Exception $e) {
-            return view('weViewer::logs', ['logFiles' => []]);
+            return view('weviewer::logs', ['logFiles' => []]);
         }
     }
     
@@ -433,7 +433,7 @@ class WeViewerController extends Controller
             $allLines = explode("\n", $content);
             $logLines = array_slice($allLines, -$lines);
             
-            return view('weViewer::log-view', compact('filename', 'logLines', 'lines'));
+            return view('weviewer::log-view', compact('filename', 'logLines', 'lines'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to read log file.');
         }
@@ -484,7 +484,7 @@ class WeViewerController extends Controller
     {
         $redirectUrl = request('redirect_url', '/weviewer');
         $error = request('error');
-        return view('weViewer::auth', compact('redirectUrl', 'error'));
+        return view('weviewer::auth', compact('redirectUrl', 'error'));
     }
     
     public function routes()
@@ -531,9 +531,9 @@ class WeViewerController extends Controller
                 'to' => min($offset + $perPage, $total)
             ];
             
-            return view('weViewer::routes', compact('routes', 'pagination'));
+            return view('weviewer::routes', compact('routes', 'pagination'));
         } catch (\Exception $e) {
-            return view('weViewer::routes', ['routes' => [], 'pagination' => []]);
+            return view('weviewer::routes', ['routes' => [], 'pagination' => []]);
         }
     }
 }
