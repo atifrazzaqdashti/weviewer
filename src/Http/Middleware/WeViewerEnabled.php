@@ -1,12 +1,12 @@
 <?php
 
-namespace Atifrazzaq\WeViewer\Http\Middleware;
+namespace Atifrazzaq\weviewer\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
-class WeViewerEnabled
+class weviewerEnabled
 {
     public function handle(Request $request, Closure $next)
     {
