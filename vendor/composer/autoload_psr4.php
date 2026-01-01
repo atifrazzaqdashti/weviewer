@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Atifrazzaq\\Weviewer\\' => array($baseDir . '/src'),
+    'Atifrazzaq\\WeViewer\\' => array($baseDir . '/src'),
 );
