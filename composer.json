@@ -1,6 +1,7 @@
 {
     "name": "atifrazzaq/weviewer",   
-    "description": "Here you can see tables details, manage logs, and many more",
+    "description": "Here you can see table details, manage logs, monitor system activity, track user actions, view reports, configure settings, and perform various administrative tasks to keep everything running smoothly.",
+    "version": "1.0.2",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -9,8 +10,8 @@
         }
     },
     "require": {
-        "php": "^8.2",
-        "illuminate/support": "^12.0"
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0"
     },
     "extra": {
         "laravel": {
