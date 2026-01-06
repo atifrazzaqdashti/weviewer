@@ -1,7 +1,7 @@
 {
     "name": "atifrazzaq/weviewer",   
     "description": "Here you can see table details, manage logs, monitor system activity, track user actions, view reports, configure settings, and perform various administrative tasks to keep everything running smoothly.",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "type": "library",
     "license": "MIT",
     "autoload": {
