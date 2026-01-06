@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Atifrazzaq\weviewer\Http\Controllers\weviewerController;
 
-Route::middleware(['web', 'Illuminate\Session\Middleware\StartSession'])->get('/weviewer/login', [weviewerController::class, 'showAuth'])->name('weviewer.login');
-Route::get('/weviewer/auth', [weviewerController::class, 'authenticate'])->name('weviewer.auth');
+Route::middleware(['web'])->group(function () {
+    Route::get('/weviewer/login', [weviewerController::class, 'showAuth'])->name('weviewer.login');
+    Route::post('/weviewer/auth', [weviewerController::class, 'authenticate'])->name('weviewer.auth');
+});
 
-Route::prefix('weviewer')->middleware(['weviewer.enabled'])->group(function () {
+Route::prefix('weviewer')->middleware(['web', 'weviewer.enabled'])->group(function () {
     Route::get('/', [weviewerController::class, 'dashboard'])->name('weviewer.dashboard');
     Route::get('/tables', [weviewerController::class, 'tables'])->name('weviewer.tables');
     Route::get('/table/{table}', [weviewerController::class, 'viewTable'])->name('weviewer.table.view');

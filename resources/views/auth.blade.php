@@ -34,7 +34,8 @@
                         </div>
                         @endif
                         
-                        <form method="GET" action="{{ route('weviewer.auth') }}">
+                        <form method="POST" action="{{ route('weviewer.auth') }}">
+                            @csrf
                             <input type="hidden" name="redirect_url" value="{{ $redirectUrl ?? '' }}">
                             <div class="mb-3">
                                 <input type="password" class="form-control" name="key" placeholder="Security Key" required autofocus>
