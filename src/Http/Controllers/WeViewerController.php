@@ -5,7 +5,7 @@ namespace Atifrazzaq\weviewer\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class weviewerController extends Controller
 {
@@ -471,8 +471,7 @@ class weviewerController extends Controller
         
         if ($key == $configKey) {
             
-            // Session::put('', 1);
-            Cookie::queue('weviewer_authenticated', true, 60);
+            Session::put('weviewer_authenticated', true);
             return redirect()->route('weviewer.dashboard');
            
         }
