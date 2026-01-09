@@ -8,16 +8,16 @@ class weviewerServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/weviewer.php', 'weviewer');
+        $this->mergeConfigFrom(__DIR__.'/../config/weviewer.php', 'weViewer');
     }
 
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'weviewer');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'weViewer');
         
         $this->publishes([
-            __DIR__.'/../config/weviewer.php' => config_path('weviewer.php'),
+            __DIR__.'/../config/weviewer.php' => config_path('weViewer.php'),
         ], 'config');
         
         $this->app['router']->aliasMiddleware('weviewer.enabled', \Atifrazzaq\weviewer\Http\Middleware\weviewerEnabled::class);
