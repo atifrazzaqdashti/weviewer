@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class weviewerController extends Controller
+class WeviewerController extends Controller
 {
     public function dashboard()
     {
@@ -467,7 +467,7 @@ class weviewerController extends Controller
         $key = $request->get('key');
       
          $redirectUrl = $request->get('redirect_url', '/weviewer/tables');
-         $configKey = config('weviewer.security_key');
+         $configKey = config('weViewer.security_key');
         
         if ($key == $configKey) {
             

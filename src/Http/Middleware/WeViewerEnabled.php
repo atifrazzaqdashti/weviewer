@@ -10,7 +10,7 @@ class weviewerEnabled
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!config('weviewer.enabled', true)) {
+        if (!config('weViewer.enabled', true)) {
             abort(404);
         }
         

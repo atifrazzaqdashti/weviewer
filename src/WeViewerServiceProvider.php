@@ -4,7 +4,7 @@ namespace Atifrazzaq\weviewer;
 
 use Illuminate\Support\ServiceProvider;
 
-class weviewerServiceProvider extends ServiceProvider
+class WeviewerServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -19,6 +19,13 @@ class weviewerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/weviewer.php' => config_path('weViewer.php'),
         ], 'config');
+        
+        // Auto-publish config if it doesn't exist
+        if (!file_exists(config_path('weViewer.php'))) {
+            $this->publishes([
+                __DIR__.'/../config/weviewer.php' => config_path('weViewer.php'),
+            ], 'weviewer-config');
+        }
         
         $this->app['router']->aliasMiddleware('weviewer.enabled', \Atifrazzaq\weviewer\Http\Middleware\weviewerEnabled::class);
         
