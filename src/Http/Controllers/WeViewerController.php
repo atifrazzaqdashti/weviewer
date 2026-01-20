@@ -464,16 +464,19 @@ class WeviewerController extends Controller
     
     public function authenticate(Request $request)
     {
+        // Ensure session is started
+        if (!Session::isStarted()) {
+            Session::start();
+        }
+        
         $key = $request->get('key');
-      
-         $redirectUrl = $request->get('redirect_url', '/weviewer/tables');
-         $configKey = config('weViewer.security_key');
+        $redirectUrl = $request->get('redirect_url', '/weviewer/tables');
+        $configKey = config('weViewer.security_key');
         
         if ($key == $configKey) {
-            
             Session::put('weviewer_authenticated', true);
+            Session::save(); // Force save session
             return redirect()->route('weviewer.dashboard');
-           
         }
         
         return redirect()->route('weviewer.login', ['redirect_url' => $redirectUrl, 'error' => 'Invalid security key']);

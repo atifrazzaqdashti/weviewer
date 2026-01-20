@@ -14,10 +14,19 @@ class weviewerEnabled
             abort(404);
         }
         
+        // Ensure session is started
+        if (!$request->hasSession()) {
+            $request->setLaravelSession(app('session')->driver());
+        }
         
-         if (!Session::get('weviewer_authenticated')) {
-             return redirect()->route('weviewer.login', ['redirect_url' => $request->fullUrl()]);
-         }
+        // Start session if not already started
+        if (!Session::isStarted()) {
+            Session::start();
+        }
+        
+        if (!Session::get('weviewer_authenticated')) {
+            return redirect()->route('weviewer.login', ['redirect_url' => $request->fullUrl()]);
+        }
 
         return $next($request);
     }
