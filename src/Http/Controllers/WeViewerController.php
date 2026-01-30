@@ -21,7 +21,7 @@ class WeviewerController extends Controller
             'database_engine' => $this->getDatabaseEngine()
         ];
         
-        return view('weViewer::dashboard', compact('stats'));
+        return view('weviewer::dashboard', compact('stats'));
     }
     
     public function tables()
@@ -45,7 +45,7 @@ class WeviewerController extends Controller
             'to' => min($offset + $perPage, $total)
         ];
         
-        return view('weViewer::tables', compact('tables', 'pagination'));
+        return view('weiewer::tables', compact('tables', 'pagination'));
     }
     
     public function viewTable($tableName)
@@ -68,7 +68,7 @@ class WeviewerController extends Controller
             $records = $query->paginate($perPage)->appends(request()->query());
             $columns = DB::getSchemaBuilder()->getColumnListing($tableName);
             
-            return view('weViewer::table-view', compact('records', 'columns', 'tableName'));
+            return view('weviewer::table-view', compact('records', 'columns', 'tableName'));
         } catch (\Exception $e) {
             return redirect()->route('weviewer.tables')->with('error', 'Table not found or error accessing table.');
         }
@@ -486,7 +486,7 @@ class WeviewerController extends Controller
     {
         $redirectUrl = request('redirect_url', '/weviewer');
         $error = request('error');
-        return view('weViewer::auth', compact('redirectUrl', 'error'));
+        return view('weviewer::auth', compact('redirectUrl', 'error'));
     }
     
     public function routes()
@@ -533,9 +533,9 @@ class WeviewerController extends Controller
                 'to' => min($offset + $perPage, $total)
             ];
             
-            return view('weViewer::routes', compact('routes', 'pagination'));
+            return view('weviewer::routes', compact('routes', 'pagination'));
         } catch (\Exception $e) {
-            return view('weViewer::routes', ['routes' => [], 'pagination' => []]);
+            return view('weviewer::routes', ['routes' => [], 'pagination' => []]);
         }
     }
 }

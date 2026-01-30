@@ -28,7 +28,7 @@ class WeviewerServiceProvider extends ServiceProvider
         // Auto-publish config if it doesn't exist
         if (!file_exists(config_path('weViewer.php'))) {
             $this->publishes([
-                __DIR__.'/../config/weviewer.php' => config_path('weViewer.php'),
+                __DIR__.'/../config/weViewer.php' => config_path('weViewer.php'),
             ], 'weviewer-config');
         }
         
